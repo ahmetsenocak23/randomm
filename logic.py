@@ -7,8 +7,16 @@ class DB_Manager:
         
     def random_movie(self):
         sql = "SELECT original_title FROM movies ORDER BY RANDOM() LIMIT 1"
-       
         return self.__select_data(sql)
+    
+    def random_movie_time(self):
+        sql2 = "SELECT original_title , release_date FROM movies WHERE release_date > 2013 ORDER BY RANDOM() LIMIT 1"
+        return self.__select_data(sql2)
+    
+    def random_movie_time2(self):
+        sql3 = "SELECT original_title , release_date FROM movies WHERE release_date < 2013 ORDER BY RANDOM() LIMIT 1"
+        return self.__select_data(sql3)
+    
             
     def __executemany(self, sql, data):
         conn = sqlite3.connect(self.database)
